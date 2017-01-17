@@ -7,9 +7,9 @@ export default class ListItem extends Component {
 
 		return (
 			<li className="list__item" onClick={() => this.props.onItemSelect(item)}>
-				<img src={item.image}/>
+				<img src={item.image}/>				
+				<p>{item.price} <span className="rub"></span></p>
 				<h4>{item.name}</h4>
-				<p>Ð¦ÐµÐ½Ð°: {item.price}$</p>
 			</li>
 		)
 	}

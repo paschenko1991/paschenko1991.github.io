@@ -27,6 +27,7 @@ export default class Cart extends Component {
 		return (
 			<div className={this.props.open ? 'cart-popup--show' : 'cart-popup'}>
 				<div className="cart">
+					<h2 className="sct">Shoping Cart</h2>
 					<ul className="cart-list">
 						{
 							this.props.cart.map((item, index) => {
@@ -36,19 +37,22 @@ export default class Cart extends Component {
 											<img src={item.image} alt="" className="item-image"/>
 										</div>
 										<div className="col">
-											<h5 className="item-name">{item.name}</h5>
-											<span>Размер: {item.size}</span>
-											<span>Количество: {item.quantity}</span>
-											<span>Цена: {item.price}$</span>
-											<a className="item-remove" href="" onClick={this.removeItem(index)}>&#10006;</a>
+											<h4 className="item-name">{item.name}</h4>
+											<span>Size: {item.size}</span>
+											<span>Price: {item.price} rub</span>
+											<a className="item-remove" href="" onClick={this.removeItem(index)}>
+												<span className="remove"></span>
+											</a>
 										</div>
 									</li>
 								);
 							})
 						}
 					</ul>
-					<p className="total-price">Сумма: {this.props.total}$</p>
-					<a className="cart-close" href="" onClick={this.cartClose()}>&#10006;</a>
+					<p className="total-price">Price: {this.props.total} rub</p>
+					<a className="cart-close" href="" onClick={this.cartClose()}>
+						<span className="close"></span>
+					</a>
 				</div>
 			</div>
 		);

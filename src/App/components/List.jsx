@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import ListItem from "./ListItem.js"
+import ListItem from "./ListItem.jsx"
 
 export default class List extends Component {
 	constructor(props) {

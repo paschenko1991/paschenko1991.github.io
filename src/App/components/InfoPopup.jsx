@@ -10,7 +10,6 @@ export default class InfoPopup extends Component {
 			quantity: 1
 		};
 		this.chooseSize = this.chooseSize.bind(this);
-		this.chooseQuantity = this.chooseQuantity.bind(this);
 		this.addToCart = this.addToCart.bind(this);
 		this.popupHide = this.popupHide.bind(this);
 	}
@@ -18,12 +17,6 @@ export default class InfoPopup extends Component {
 	chooseSize(size) {
 		this.setState({
 			size: size
-		})
-	};
-
-	chooseQuantity(e) {
-		this.setState({
-			quantity: e.target.value
 		})
 	};
 
@@ -36,7 +29,6 @@ export default class InfoPopup extends Component {
 			image: this.props.item.image,
 			name: this.props.item.name,
 			size: this.state.size,
-			quantity: this.state.quantity,
 			price: this.props.item.price
 		});
 	}
@@ -54,12 +46,13 @@ export default class InfoPopup extends Component {
 		return (
 			<div className={this.props.popupIsOpen ? 'info-popup--open' : 'info-popup'}>
 				<div className="info">
-					<div className="col">
-	 					<img src={item.image} className="info__image"/>				
+					<div className="col2">
+						<a target="_blank" href={item.image} title="Open image in new window">
+	 						<img src={item.image} className="info__image"/>	
+	 					</a>		 								
 	 				</div>
-	 				<div className="col">
+	 				<div className="col3">
 	 					<h3 className="info__name">{item.name}</h3>
-	 					<p className="info__desc">{item.desc}</p>
 						<div className="info__sizes">
 							{
 								item.sizes.map((size, index) => {
@@ -72,19 +65,15 @@ export default class InfoPopup extends Component {
 								})
 							}
 						</div>
-						<span className="info__price">Цена: {item.price}$</span>
-						<label className="info__quantity">Количество: <input type="number" min="1" max="9" defaultValue="1" onChange={this.chooseQuantity}/></label>
-						<button className="btn-buy" href="" onClick={this.addToCart}>Купить</button>
-						<a className="popup-hide" href="" onClick={this.popupHide()}>&#10006;</a>				
+						<span className="info__price">Price: {item.price} <span className="rub"></span></span>
+						<button className="btn-buy" href="" onClick={this.addToCart}>Buy</button>
+						<p className="info__desc">{item.desc}</p>
+						<a className="popup-hide" href="" onClick={this.popupHide()}>
+							<span className="close"></span>
+						</a>				
 	 				</div>
 				</div>
 			</div>
 		);
 	}
 }
-
-
-
-
-// WEBPACK FOOTER //
-// src/App/Components/InfoPopup.js

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { render } from 'react-dom';
 
-import Cart from './Cart.js'
+import Cart from './Cart.jsx'
 
 export default class NavBar extends Component {
 	constructor(props) {
@@ -31,9 +31,9 @@ export default class NavBar extends Component {
 
 	render() {
 		return (
-			<div className="navbar">
+			<div className="cartbutton">
 				<a href="" className="btn-cart" onClick={this.cartOpen()}>
-					<span className="cart-items">{this.props.cart.length}</span>
+					<span className="cart-items">Item's: {this.props.cart.length}</span>
 				</a>
 				<Cart 
 					cart={this.props.cart} 

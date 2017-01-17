@@ -21834,6 +21834,7 @@
 				totalPrice: 0,
 				infoPopupIsOpen: false
 			};
+
 			_this.infoPopupOpen = _this.infoPopupOpen.bind(_this);
 			_this.infoPopupHide = _this.infoPopupHide.bind(_this);
 			_this.addToCart = _this.addToCart.bind(_this);
@@ -21842,6 +21843,13 @@
 		}
 
 		_createClass(App, [{
+			key: 'infoPopup',
+			value: function infoPopup() {
+				this.setState({
+					infoPopupIsOpen: !this.state.infoPopupIsOpen
+				});
+			}
+		}, {
 			key: 'infoPopupOpen',
 			value: function infoPopupOpen() {
 				this.setState({
@@ -21861,7 +21869,8 @@
 				this.setState({
 					selectedItem: item
 				});
-				this.infoPopupOpen();
+				this.infoPopup();
+				//this.infoPopupOpen();
 			}
 		}, {
 			key: 'addToCart',
@@ -21914,13 +21923,18 @@
 				return _react2.default.createElement(
 					'div',
 					{ className: 'container' },
+					_react2.default.createElement(
+						'h1',
+						null,
+						'Shoes Store'
+					),
 					_react2.default.createElement(_NavBar2.default, { cart: this.state.cart, remove: this.removeFromCart, total: this.state.totalPrice }),
 					_react2.default.createElement(_List2.default, { data: this.state.data, onItemSelect: this.selectItem.bind(this) }),
 					_react2.default.createElement(_InfoPopup2.default, {
 						item: this.state.selectedItem,
 						update: this.addToCart,
 						popupIsOpen: this.state.infoPopupIsOpen,
-						popupHide: this.infoPopupHide })
+						popupHide: this.infoPopup })
 				);
 			}
 		}]);
@@ -22047,7 +22061,7 @@
 					_react2.default.createElement(
 						"p",
 						null,
-						"\xD0\xA6\xD0\xB5\xD0\xBD\xD0\xB0: ",
+						"Price: ",
 						item.price,
 						"$"
 					)
@@ -22269,7 +22283,7 @@
 										_react2.default.createElement(
 											'a',
 											{ className: 'item-remove', href: '', onClick: _this4.removeItem(index) },
-											'\u2716'
+											'Close'
 										)
 									)
 								);
@@ -22278,14 +22292,14 @@
 						_react2.default.createElement(
 							'p',
 							{ className: 'total-price' },
-							'\u0421\u0443\u043C\u043C\u0430: ',
+							'Price: ',
 							this.props.total,
-							'$'
+							' rub'
 						),
 						_react2.default.createElement(
 							'a',
 							{ className: 'cart-close', href: '', onClick: this.cartClose() },
-							'\u2716'
+							'close'
 						)
 					)
 				);
@@ -22446,12 +22460,12 @@
 							_react2.default.createElement(
 								'button',
 								{ className: 'btn-buy', href: '', onClick: this.addToCart },
-								'\u041A\u0443\u043F\u0438\u0442\u044C'
+								'Buy'
 							),
 							_react2.default.createElement(
 								'a',
 								{ className: 'popup-hide', href: '', onClick: this.popupHide() },
-								'\u2716'
+								'Close'
 							)
 						)
 					)

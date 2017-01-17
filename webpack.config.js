@@ -4,12 +4,12 @@ module.exports = {
 	devtool: 'cheap-module-source-map',
 	entry: "./src/index.js",
 	output: {
-		filename: "./assets/bundle.js"
+		filename: "./bundle.js"
 	},
 	module: {
   	loaders: [
 			{
-      	test: /\.js$/,
+      	test: /\.jsx?$/,
       	exclude: /node_modules/,
       	loader: 'babel-loader',
       	query: {
